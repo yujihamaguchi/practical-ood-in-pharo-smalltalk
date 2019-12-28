@@ -13,6 +13,11 @@ Wheel class >> rim: rimInteger tire: tireFloat [
 	^ self basicNew setRim: rimInteger tire: tireFloat
 ]
 
+{ #category : #calculating }
+Wheel >> diameter [
+	^ rim + (tire * 2)
+]
+
 { #category : #accessing }
 Wheel >> rim [
 	^ rim

@@ -14,7 +14,7 @@ RevealingReferences class >> data: aData [
 
 { #category : #calculating }
 RevealingReferences >> diameters [
-	^ wheels collect: [ :wheel | wheel rim + (wheel tire * 2) ]
+	^ wheels collect: [ :wheel | wheel diameter ]
 ]
 
 { #category : #private }
