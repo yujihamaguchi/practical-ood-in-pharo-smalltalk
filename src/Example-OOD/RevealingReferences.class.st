@@ -14,14 +14,11 @@ RevealingReferences class >> data: aData [
 
 { #category : #calculating }
 RevealingReferences >> diameters [
-	^ wheels
-		collect: [ :wheel | (wheel at: #rim) + ((wheel at: #tire) * 2) ]
+	^ wheels collect: [ :wheel | wheel rim + (wheel tire * 2) ]
 ]
 
 { #category : #private }
 RevealingReferences >> setData: aData [
 	wheels := aData
-		collect: [ :cell | 
-			{(#rim -> (cell at: 1)).
-			(#tire -> (cell at: 2))} asDictionary ]
+		collect: [ :cell | Wheel rim: (cell at: 1) tire: (cell at: 2) ]
 ]
