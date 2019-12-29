@@ -6,7 +6,7 @@ Class {
 		'cog',
 		'wheel'
 	],
-	#category : #'Example-OOD'
+	#category : #'Example-OOD-gear'
 }
 
 { #category : #'instance creation' }

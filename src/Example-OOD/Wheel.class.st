@@ -5,7 +5,7 @@ Class {
 		'rim',
 		'tire'
 	],
-	#category : #'Example-OOD'
+	#category : #'Example-OOD-gear'
 }
 
 { #category : #'instance creation' }
@@ -30,8 +30,8 @@ Wheel >> rim [
 
 { #category : #private }
 Wheel >> setRim: rimInteger tire: tireFloat [
-	rim := rimInteger .
-	tire := tireFloat .
+	rim := rimInteger.
+	tire := tireFloat.
 	^ self
 ]
 

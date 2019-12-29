@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'data'
 	],
-	#category : #'Example-OOD'
+	#category : #'Example-OOD-work'
 }
 
 { #category : #'instance creation' }
