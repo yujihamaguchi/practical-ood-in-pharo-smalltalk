@@ -14,6 +14,11 @@ Wheel class >> rim: rimInteger tire: tireFloat [
 ]
 
 { #category : #calculating }
+Wheel >> circumference [
+	^ self diameter * Float pi
+]
+
+{ #category : #calculating }
 Wheel >> diameter [
 	^ rim + (tire * 2)
 ]
