@@ -4,8 +4,7 @@ Class {
 	#instVars : [
 		'chainring',
 		'cog',
-		'rim',
-		'tire'
+		'wheel'
 	],
 	#category : #'Example-OOD'
 }
@@ -17,7 +16,7 @@ Gear class >> chainring: chainringInteger cog: cogInteger rim: rimInteger tire: 
 
 { #category : #calculating }
 Gear >> gearInches [
-	^ self ratio * (rim + (tire * 2))
+	^ self ratio * wheel diameter 
 ]
 
 { #category : #calculating }
@@ -29,7 +28,6 @@ Gear >> ratio [
 Gear >> setChainring: chainringInteger cog: cogInteger rim: rimInteger tire: tireFloat [
 	chainring := chainringInteger.
 	cog := cogInteger.
-	rim := rimInteger .
-	tire := tireFloat .
+	wheel := Wheel rim: rimInteger tire: tireFloat .
 	^ self
 ]
