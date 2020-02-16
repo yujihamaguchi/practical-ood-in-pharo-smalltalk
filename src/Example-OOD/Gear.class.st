@@ -23,8 +23,13 @@ Gear class >> chainring: chainringInteger cog: cogInteger wheel: aWheel [
 ]
 
 { #category : #calculating }
+Gear >> diameter [ 
+	^ wheel diameter 
+]
+
+{ #category : #calculating }
 Gear >> gearInches [
-	^ self ratio * wheel diameter
+	^ self ratio * self diameter
 ]
 
 { #category : #calculating }
@@ -36,15 +41,6 @@ Gear >> ratio [
 Gear >> setChainring: chainringInteger cog: cogInteger [
 	chainring := chainringInteger.
 	cog := cogInteger.
-	^ self
-]
-
-{ #category : #private }
-Gear >> setChainring: chainringInteger cog: cogInteger rim: rimInteger tire: tireFloat [
-	chainring := chainringInteger.
-	cog := cogInteger.
-	rim := rimInteger.
-	tire := tireFloat.
 	^ self
 ]
 
