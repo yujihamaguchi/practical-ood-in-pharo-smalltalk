@@ -3,8 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'chainring',
-		'cog',
-		'wheel'
+		'cog'
 	],
 	#category : #'Example-OOD-gear'
 }
@@ -15,26 +14,13 @@ Gear class >> chainring: chainringInteger cog: cogInteger [
 ]
 
 { #category : #calculating }
-Gear >> diameter [ 
-	^ wheel diameter 
-]
-
-{ #category : #calculating }
-Gear >> gearInches [
-	^ self ratio * self diameter
+Gear >> gearInches: diameterFloat [
+	^ self ratio * diameterFloat
 ]
 
 { #category : #calculating }
 Gear >> ratio [
 	^ chainring / cog asFloat
-]
-
-{ #category : #initialization }
-Gear >> setArgs: args [
-	chainring := args at: #chainring ifAbsent: 52.
-	cog := args at: #cog ifAbsent: 11.
-	wheel := args at: #wheel.
-	^ self
 ]
 
 { #category : #private }

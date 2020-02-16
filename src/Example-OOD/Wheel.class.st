@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'rim',
-		'tire'
+		'tire',
+		'gear'
 	],
 	#category : #'Example-OOD-gear'
 }
@@ -23,6 +24,11 @@ Wheel >> diameter [
 	^ rim + (tire * 2)
 ]
 
+{ #category : #calculating }
+Wheel >> gearInches [
+	^ gear ratio * self diameter
+]
+
 { #category : #accessing }
 Wheel >> rim [
 	^ rim
@@ -33,6 +39,14 @@ Wheel >> setRim: rimInteger tire: tireFloat [
 	rim := rimInteger.
 	tire := tireFloat.
 	^ self
+]
+
+{ #category : #initialization }
+Wheel >> setRim: rimInteger tire: tireFloat chainring: chainringInteger cog: cogInteger [
+	rim := rimInteger .
+	tire := tireFloat .
+	gear := Gear chainring: chainringInteger cog: cogInteger .
+	^ self 
 ]
 
 { #category : #accessing }
