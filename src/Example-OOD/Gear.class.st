@@ -14,14 +14,6 @@ Gear class >> chainring: chainringInteger cog: cogInteger [
 	^ self basicNew setChainring: chainringInteger cog: cogInteger
 ]
 
-{ #category : #'instance creation' }
-Gear class >> chainring: chainringInteger cog: cogInteger wheel: aWheel [
-	^ self basicNew
-		setChainring: chainringInteger
-		cog: cogInteger
-		wheel: aWheel 
-]
-
 { #category : #calculating }
 Gear >> diameter [ 
 	^ wheel diameter 
@@ -37,17 +29,17 @@ Gear >> ratio [
 	^ chainring / cog asFloat
 ]
 
-{ #category : #private }
-Gear >> setChainring: chainringInteger cog: cogInteger [
-	chainring := chainringInteger.
-	cog := cogInteger.
+{ #category : #initialization }
+Gear >> setArgs: args [
+	chainring := args at: #chainring ifAbsent: 52.
+	cog := args at: #cog ifAbsent: 11.
+	wheel := args at: #wheel.
 	^ self
 ]
 
 { #category : #private }
-Gear >> setChainring: chainringInteger cog: cogInteger wheel: aWheel [
+Gear >> setChainring: chainringInteger cog: cogInteger [
 	chainring := chainringInteger.
 	cog := cogInteger.
-	wheel := aWheel.
 	^ self
 ]
