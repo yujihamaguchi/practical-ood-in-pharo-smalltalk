@@ -1,7 +1,7 @@
 Class {
 	#name : #ObscuringReferencesTest,
 	#superclass : #TestCase,
-	#category : #'Example-OOD-Tests'
+	#category : #'Example-OOD-Tests-Work'
 }
 
 { #category : #tests }

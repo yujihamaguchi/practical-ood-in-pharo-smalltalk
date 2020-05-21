@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'wheels'
 	],
-	#category : #'Example-OOD-work'
+	#category : #'Example-OOD-Work'
 }
 
 { #category : #'instance creation' }

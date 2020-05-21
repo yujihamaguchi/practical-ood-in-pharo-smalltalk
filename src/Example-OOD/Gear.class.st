@@ -5,7 +5,7 @@ Class {
 		'chainring',
 		'cog'
 	],
-	#category : #'Example-OOD-gear'
+	#category : #'Example-OOD-Gear'
 }
 
 { #category : #'instance creation' }
