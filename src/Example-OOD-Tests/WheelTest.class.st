@@ -1,7 +1,7 @@
 Class {
 	#name : #WheelTest,
 	#superclass : #TestCase,
-	#category : #'Example-OOD-Tests'
+	#category : #'Example-OOD-Tests-Gear'
 }
 
 { #category : #tests }
