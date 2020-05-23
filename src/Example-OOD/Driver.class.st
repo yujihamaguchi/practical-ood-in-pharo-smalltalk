@@ -13,3 +13,11 @@ Driver >> fillWaterTank: aVehicle [
 Driver >> gasUp: aVehicle [
 	^ self
 ]
+
+{ #category : #preparation }
+Driver >> prepareTrip: aTrip [
+	| vehicle |
+	vehicle := aTrip vehicle.
+	self gasUp: vehicle.
+	self fillWaterTank: vehicle
+]

@@ -6,7 +6,16 @@ Class {
 
 { #category : #tests }
 TripTest >> testPrepare [
-	| mechanic tripCoordinator driver preparers bicycles customers vehicle trip |
+	| aTrip preparers aPreparer anotherPreparer |
+	aTrip := Trip new.
+	aPreparer := Mock new.
+	anotherPreparer := Mock new.
+	preparers := { aPreparer . anotherPreparer }.
+	aTrip prepare: preparers.
+	(aPreparer should receive prepareTrip: aTrip) once.
+	(anotherPreparer should receive prepareTrip: aTrip) once.
+	
+	"| mechanic tripCoordinator driver preparers bicycles customers vehicle trip |
 	mechanic := Mechanic new.
 	bicycles := #bicycles.
 	(mechanic stub prepareBicycles: bicycles) willReturn: Any.
@@ -26,5 +35,5 @@ TripTest >> testPrepare [
 	(mechanic should receive prepareBicycles: bicycles) once.
 	(tripCoordinator should receive buyFood: customers) once.
 	(driver should receive gasUp: vehicle) once.
-	(driver should receive fillWaterTank: vehicle) once
+	(driver should receive fillWaterTank: vehicle) once"
 ]

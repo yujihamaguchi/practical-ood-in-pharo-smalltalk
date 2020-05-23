@@ -10,6 +10,6 @@ Mechanic >> prepareBicycle: bicycle [
 ]
 
 { #category : #preparation }
-Mechanic >> prepareBicycles: bicycles [
-	bicycles do: [ :bicycle | self prepareBicycle: bicycle ]
+Mechanic >> prepareTrip: aTrip [
+	aTrip bicycles do: [ :aBicycle | self prepareBicycle: aBicycle ]
 ]

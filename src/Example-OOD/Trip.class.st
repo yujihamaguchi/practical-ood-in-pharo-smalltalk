@@ -9,18 +9,19 @@ Class {
 	#category : #'Example-OOD-Trip'
 }
 
+{ #category : #accessing }
+Trip >> bicycles [
+	^ bicycles
+]
+
+{ #category : #accessing }
+Trip >> customers [
+	^ customers
+]
+
 { #category : #dispatching }
 Trip >> prepare: preparers [
-	preparers
-		do: [ :preparer | 
-			preparer class == Mechanic
-				ifTrue: [ preparer prepareBicycles: bicycles ].
-			preparer class == TripCoordinator
-				ifTrue: [ preparer buyFood: customers ].
-			preparer class == Driver
-				ifTrue: [ preparer
-						gasUp: vehicle;
-						fillWaterTank: vehicle ] ]
+	preparers do: [ :aPreparer | aPreparer prepareTrip: self ]
 ]
 
 { #category : #initialization }
@@ -29,4 +30,9 @@ Trip >> setBicycles: someBicycles customers: someCustomers vehicle: aVehicle [
 	customers := someCustomers .
 	vehicle := aVehicle .
 	^ self
+]
+
+{ #category : #accessing }
+Trip >> vehicle [
+	^ vehicle
 ]

@@ -8,3 +8,8 @@ Class {
 TripCoordinator >> buyFood: someCustomers [
 	^ self
 ]
+
+{ #category : #preparation }
+TripCoordinator >> prepareTrip: aTrip [
+   self buyFood: aTrip customers
+]

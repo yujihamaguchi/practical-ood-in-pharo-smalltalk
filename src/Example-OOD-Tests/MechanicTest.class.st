@@ -5,10 +5,13 @@ Class {
 }
 
 { #category : #tests }
-MechanicTest >> testPrepareBicycles [
-	| mechanic |
+MechanicTest >> testPrepareTrip [
+	| mechanic aTrip |
 	mechanic := Mechanic new.
 	mechanic stub.
-	mechanic prepareBicycles: #(#bicycle1).
-	(mechanic should receive prepareBicycle: #bicycle1) once
+	aTrip := Mock new.
+	aTrip stub bicycles willReturn: #(#aBicycle #anotherBicycle).
+	mechanic prepareTrip: aTrip.
+	(mechanic should receive prepareBicycle: #aBicycle) once.
+	(mechanic should receive prepareBicycle: #anotherBicycle) once
 ]
