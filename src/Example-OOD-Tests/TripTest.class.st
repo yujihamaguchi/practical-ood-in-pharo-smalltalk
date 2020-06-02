@@ -6,34 +6,13 @@ Class {
 
 { #category : #tests }
 TripTest >> testPrepare [
-	| aTrip preparers aPreparer anotherPreparer |
-	aTrip := Trip new.
-	aPreparer := Mock new.
-	anotherPreparer := Mock new.
-	preparers := { aPreparer . anotherPreparer }.
-	aTrip prepare: preparers.
-	(aPreparer should receive prepareTrip: aTrip) once.
-	(anotherPreparer should receive prepareTrip: aTrip) once.
-	
-	"| mechanic tripCoordinator driver preparers bicycles customers vehicle trip |
-	mechanic := Mechanic new.
-	bicycles := #bicycles.
-	(mechanic stub prepareBicycles: bicycles) willReturn: Any.
-	tripCoordinator := TripCoordinator new.
-	customers := #customers.
-	(tripCoordinator stub buyFood: customers) willReturn: Any.
-	driver := Driver new.
-	vehicle := #vehicle.
-	(driver stub gasUp: vehicle) willReturn: Any.
-	(driver stub fillWaterTank: vehicle) willReturn: Any.
-	preparers := {mechanic.
-	tripCoordinator.
-	driver}.
+	| trip preparers preparer1 preparer2 |
 	trip := Trip new.
-	trip setBicycles: bicycles customers: customers vehicle: vehicle.
+	preparer1 := Mock new.
+	preparer2 := Mock new.
+	preparers := { preparer1 . preparer2 }.
 	trip prepare: preparers.
-	(mechanic should receive prepareBicycles: bicycles) once.
-	(tripCoordinator should receive buyFood: customers) once.
-	(driver should receive gasUp: vehicle) once.
-	(driver should receive fillWaterTank: vehicle) once"
+	(preparer1 should receive prepareTrip: trip) once.
+	(preparer2 should receive prepareTrip: trip) once.
+
 ]

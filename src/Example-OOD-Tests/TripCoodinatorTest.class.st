@@ -9,13 +9,8 @@ TripCoodinatorTest >> testPrepareTrip [
 	| tripCoordinator trip |
 	tripCoordinator := TripCoordinator new.
 	tripCoordinator stub.
-	
 	trip := Mock new.
 	trip stub customers willReturn: #customers.
-
-	tripCoordinator prepareTrip: trip.	
-	
+	tripCoordinator prepareTrip: trip.
 	tripCoordinator should receive buyFood: #customers
-	
-
 ]
