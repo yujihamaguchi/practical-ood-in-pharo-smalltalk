@@ -9,8 +9,7 @@ Class {
 }
 
 { #category : #initialization }
-MountainBicycle >> setSize: aSize frontShock: aFrontShock rearShock: aRearShock [
-	size := aSize.
+MountainBicycle >> setFrontShock: aFrontShock rearShock: aRearShock [
 	frontShock := aFrontShock .
 	rearShock := aRearShock .
 	^ self
