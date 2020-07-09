@@ -22,10 +22,13 @@ Bicycle >> size [
 
 { #category : #accessing }
 Bicycle >> spares [
-	^ Dictionary new
+	| attributes |
+	attributes := Dictionary new.
+	attributes
 		at: #tireSize put: 23;
 		at: #chain put: '10-speed';
-		at: #tapeColor put: tapeColor
+		at: #tapeColor put: tapeColor.
+	^ attributes
 ]
 
 { #category : #accessing }
