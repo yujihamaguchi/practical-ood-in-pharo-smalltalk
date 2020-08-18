@@ -6,17 +6,15 @@ Class {
 
 { #category : #tests }
 BicycleTest >> testSize [ 
-	| roadBicycle mountainBicycle |
-	roadBicycle := RoadBicycle new setSize: 'M' tapeColor: 'red'.
-	self assert: roadBicycle size equals: 'M'.
+	| mountainBicycle |
 	mountainBicycle := MountainBicycle new setSize: 'S' frontShock: 'Manitou' rearShock: 'Fox'.
-	self assert: mountainBicycle size equals: 'S'
+	self assert: mountainBicycle size equals: 'S' 
 ]
 
 { #category : #tests }
 BicycleTest >> testSpares [
 	| bicycle bicycleAttributes mountainBicycle mountainBicycleAttributes |
-	bicycle := RoadBicycle new setSize: 'M' tapeColor: 'red'.
+	bicycle := Bicycle new setSize: 'M' tapeColor: 'red'.
 	bicycleAttributes := Dictionary new.
 	bicycleAttributes
 		at: #tireSize put: 23;
