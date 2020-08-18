@@ -16,9 +16,7 @@ BicycleTest >> testSize [
 { #category : #tests }
 BicycleTest >> testSpares [
 	| bicycle bicycleAttributes mountainBicycle mountainBicycleAttributes |
-	bicycle := RoadBicycle new
-		setSize: 'M';
-		setTapeColor: 'red'.
+	bicycle := RoadBicycle new setSize: 'M' tapeColor: 'red'.
 	bicycleAttributes := Dictionary new.
 	bicycleAttributes
 		at: #tireSize put: 23;
@@ -26,8 +24,9 @@ BicycleTest >> testSpares [
 		at: #tapeColor put: 'red'.
 	self assert: bicycle spares equals: bicycleAttributes.
 	mountainBicycle := MountainBicycle new
-		setSize: 'S';
-		setFrontShock: 'Manitou' rearShock: 'Fox'.
+		setSize: 'S'
+		frontShock: 'Manitou'
+		rearShock: 'Fox'.
 	mountainBicycleAttributes := Dictionary new.
 	mountainBicycleAttributes
 		at: #tireSize put: 23;
