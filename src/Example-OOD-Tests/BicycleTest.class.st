@@ -7,9 +7,9 @@ Class {
 { #category : #tests }
 BicycleTest >> testSize [ 
 	| roadBicycle mountainBicycle |
-	roadBicycle := RoadBicycle new setSize: 'M'; setTapeColor: 'red'.
+	roadBicycle := RoadBicycle new setSize: 'M' tapeColor: 'red'.
 	self assert: roadBicycle size equals: 'M'.
-	mountainBicycle := MountainBicycle new setSize: 'S'; setFrontShock: 'Manitou' rearShock: 'Fox'.
+	mountainBicycle := MountainBicycle new setSize: 'S' frontShock: 'Manitou' rearShock: 'Fox'.
 	self assert: mountainBicycle size equals: 'S'
 ]
 

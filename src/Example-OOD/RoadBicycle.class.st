@@ -2,15 +2,22 @@ Class {
 	#name : #RoadBicycle,
 	#superclass : #Bicycle,
 	#instVars : [
+		'size',
 		'tapeColor'
 	],
 	#category : #'Example-OOD-FastFeet'
 }
 
 { #category : #initialization }
-RoadBicycle >> setTapeColor: aColor [
+RoadBicycle >> setSize: aSize tapeColor: aColor [
+	size := aSize.
 	tapeColor := aColor.
 	^ self
+]
+
+{ #category : #accessing }
+RoadBicycle >> size [
+	^ size
 ]
 
 { #category : #accessing }
