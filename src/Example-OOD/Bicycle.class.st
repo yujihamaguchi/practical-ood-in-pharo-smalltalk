@@ -2,9 +2,7 @@ Class {
 	#name : #Bicycle,
 	#superclass : #Object,
 	#instVars : [
-		'size',
-		'chain',
-		'tireSize'
+		'size'
 	],
 	#category : #'Example-OOD-FastFeet'
 }
