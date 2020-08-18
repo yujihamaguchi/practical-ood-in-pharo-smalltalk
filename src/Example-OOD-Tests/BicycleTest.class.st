@@ -6,12 +6,13 @@ Class {
 
 { #category : #tests }
 BicycleTest >> testSpares [
-	| bicycle bicycleAttributes |
+	| bicycle |
 	bicycle := Bicycle new setSize: 'M' tapeColor: 'red'.
-	bicycleAttributes := Dictionary new.
-	bicycleAttributes
-		at: #tireSize put: 23;
-		at: #chain put: '10-speed';
-		at: #tapeColor put: 'red'.
-	self assert: bicycle spares equals: bicycleAttributes
+	self
+		assert: bicycle spares
+		equals:
+			(Dictionary new
+				at: #tireSize put: 23;
+				at: #chain put: '10-speed';
+				at: #tapeColor put: 'red')
 ]
