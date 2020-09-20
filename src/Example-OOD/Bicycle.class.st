@@ -9,9 +9,9 @@ Class {
 }
 
 { #category : #initialization }
-Bicycle >> initialize: dictionary [
-	size := dictionary at: #size.
-	tapeColor := dictionary at: #tapeColor.
+Bicycle >> initialize: aDict [
+	size := aDict at: #size.
+	tapeColor := aDict at: #tapeColor.
 	^ self
 ]
 
@@ -22,11 +22,6 @@ Bicycle >> size [
 
 { #category : #accessing }
 Bicycle >> spares [
-	| dictionary |
-	dictionary := Dictionary new.
-	dictionary add: (Association new; key: #size value: size).
-	dictionary add: (Association new; key: #tapeColor value: tapeColor).
-	dictionary add: (Association new; key: #tireSize value: '23').
-	^ dictionary
+	^ Dictionary newFromPairs: { #size . size . #tapeColor . tapeColor . #tireSize . '23' }
 	
 ]
