@@ -14,18 +14,9 @@ BicycleTest >> testSize [
 
 { #category : #tests }
 BicycleTest >> testSpares [
-	| bicycle size tapeColor dictionary tireSize expected |
+	| bicycle expected |
 	bicycle := Bicycle new.
-	size := Association new; key: #size value: 'M'.
-	tapeColor := Association new; key: #tapeColor value: 'red'.
-	dictionary := Dictionary new.
-	dictionary add: size.
-	dictionary add: tapeColor.
-	bicycle initialize: dictionary.
-	tireSize := Association new; key: #tireSize value: '23'.
-	expected := Dictionary new.
-	expected add: size.
-	expected add: tapeColor.
-	expected add: tireSize.
+	bicycle initialize: (Dictionary newFromPairs: { #size . 'M' . #tapeColor . 'red' }).
+	expected := Dictionary newFromPairs: { #size . 'M' . #tapeColor . 'red' . #tireSize . '23' }.
 	self assert: bicycle spares equals: expected
 ]
