@@ -6,14 +6,9 @@ Class {
 
 { #category : #tests }
 BicycleTest >> testSize [
-	| bicycle dictionary size tapeColor |
+	| bicycle |
 	bicycle := Bicycle new.
-	size := Association key: #size value: 'M'.
-	tapeColor := Association key: #tapeColor value: 'red'.
-	dictionary := Dictionary new.
-	dictionary add: size.
-	dictionary add: tapeColor.
-	bicycle initialize: dictionary.
+	bicycle initialize: (Dictionary newFromPairs: { #size . 'M' . #tapeColor . 'red' }).
 	self assert: bicycle size equals: 'M'
 ]
 
