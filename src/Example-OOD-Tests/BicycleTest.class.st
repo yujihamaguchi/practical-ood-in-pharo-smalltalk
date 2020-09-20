@@ -8,12 +8,8 @@ Class {
 BicycleTest >> testSize [
 	| bicycle dictionary size tapeColor |
 	bicycle := Bicycle new.
-	size := Association
-		new;
-		key: #size value: 'M'.
-	tapeColor := Association
-		new;
-		key: #tapeColor value: 'red'.
+	size := Association key: #size value: 'M'.
+	tapeColor := Association key: #tapeColor value: 'red'.
 	dictionary := Dictionary new.
 	dictionary add: size.
 	dictionary add: tapeColor.
