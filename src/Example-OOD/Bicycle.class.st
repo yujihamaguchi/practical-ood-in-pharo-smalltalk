@@ -3,15 +3,21 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'size',
-		'tapeColor'
+		'tapeColor',
+		'style',
+		'frontShock',
+		'rearShock'
 	],
 	#category : #'Example-OOD-FastFeet'
 }
 
 { #category : #initialization }
 Bicycle >> initialize: aDict [
+	style := aDict at: #style ifAbsent: nil.
 	size := aDict at: #size.
-	tapeColor := aDict at: #tapeColor.
+	tapeColor := aDict at: #tapeColor ifAbsent: nil.
+	frontShock := aDict at: #frontShock ifAbsent: nil.
+	rearShock := aDict at: #rearShock ifAbsent: nil.
 	^ self
 ]
 
@@ -22,6 +28,8 @@ Bicycle >> size [
 
 { #category : #accessing }
 Bicycle >> spares [
-	^ Dictionary newFromPairs: { #size . size . #tapeColor . tapeColor . #tireSize . '23' }
+	(style = #road) 
+		ifTrue: [ ^ Dictionary newFromPairs: { #chain . '10-speed' . #tireSize . '23' . #tapeColor . tapeColor } ]
+		ifFalse: [ ^ Dictionary newFromPairs: { #chain . '10-speed' . #tireSize . '2.1' . #rearShock . rearShock  } ] 
 	
 ]
