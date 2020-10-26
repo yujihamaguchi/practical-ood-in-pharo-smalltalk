@@ -3,21 +3,32 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'size',
-		'tapeColor',
-		'style',
-		'frontShock',
-		'rearShock'
+		'chain',
+		'tireSize'
 	],
 	#category : #'Example-OOD-FastFeet'
 }
 
+{ #category : #accessing }
+Bicycle >> chain [
+	^ chain
+]
+
+{ #category : #'default value' }
+Bicycle >> defaultChain [
+	^ '10-speed'
+]
+
+{ #category : #'default value' }
+Bicycle >> defaultTireSize [
+	^ self subclassResponsibility 
+]
+
 { #category : #initialization }
 Bicycle >> initialize: aDict [
-	style := aDict at: #style ifAbsent: nil.
 	size := aDict at: #size.
-	tapeColor := aDict at: #tapeColor ifAbsent: nil.
-	frontShock := aDict at: #frontShock ifAbsent: nil.
-	rearShock := aDict at: #rearShock ifAbsent: nil.
+	chain := aDict at: #chain ifAbsent: self defaultChain.
+	tireSize := aDict at: #tireSize ifAbsent: self defaultTireSize.
 	^ self
 ]
 
@@ -27,9 +38,6 @@ Bicycle >> size [
 ]
 
 { #category : #accessing }
-Bicycle >> spares [
-	(style = #road) 
-		ifTrue: [ ^ Dictionary newFromPairs: { #chain . '10-speed' . #tireSize . '23' . #tapeColor . tapeColor } ]
-		ifFalse: [ ^ Dictionary newFromPairs: { #chain . '10-speed' . #tireSize . '2.1' . #rearShock . rearShock  } ] 
-	
+Bicycle >> tireSize [
+	^ tireSize
 ]
