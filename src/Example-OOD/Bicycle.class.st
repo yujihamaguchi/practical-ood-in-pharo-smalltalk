@@ -26,10 +26,21 @@ Bicycle >> defaultTireSize [
 
 { #category : #initialization }
 Bicycle >> initialize: aDict [
-	size := aDict at: #size.
+	size := aDict at: #size ifAbsent: nil.
 	chain := aDict at: #chain ifAbsent: self defaultChain.
 	tireSize := aDict at: #tireSize ifAbsent: self defaultTireSize.
+	self postInitialize: aDict.
 	^ self
+]
+
+{ #category : #accessing }
+Bicycle >> localSpares [
+	^ Dictionary empty
+]
+
+{ #category : #initialization }
+Bicycle >> postInitialize: aDict [
+	^ nil
 ]
 
 { #category : #accessing }
@@ -39,7 +50,10 @@ Bicycle >> size [
 
 { #category : #accessing }
 Bicycle >> spares [
-	^ Dictionary newFromPairs: { #tireSize . tireSize . #chain . chain }
+	| spares |
+	spares := Dictionary newFromPairs: { #tireSize . tireSize . #chain . chain }.
+	spares addAll: self localSpares.
+	^ spares
 ]
 
 { #category : #accessing }

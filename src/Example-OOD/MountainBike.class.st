@@ -23,6 +23,29 @@ MountainBike >> initialize: aDict [
 ]
 
 { #category : #accessing }
+MountainBike >> localSpares [
+	^ Dictionary
+		newFromPairs:
+			{#rearShock.
+			rearShock}
+]
+
+{ #category : #initialization }
+MountainBike >> nitialize: aDict [
+	frontShock := aDict at: #frontShock ifAbsent: nil.
+	rearShock := aDict at: #rearShock ifAbsent: nil.
+	super initialize: aDict.
+	^ self
+]
+
+{ #category : #initialization }
+MountainBike >> postInitialize: aDict [
+	frontShock := aDict at: #frontShock ifAbsent: nil.
+	rearShock := aDict at: #rearShock ifAbsent: nil.
+	^ self
+]
+
+{ #category : #accessing }
 MountainBike >> spares [
 	| spares |
 	spares := super spares.

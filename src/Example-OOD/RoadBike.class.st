@@ -12,22 +12,16 @@ RoadBike >> defaultTireSize [
 	^ '23'
 ]
 
-{ #category : #initialization }
-RoadBike >> initialize: aDict [
-	tapeColor := aDict at: #tapeColor ifAbsent: nil.
-	super initialize: aDict.
-	^ self
+{ #category : #accessing }
+RoadBike >> localSpares [
+	^ Dictionary
+		newFromPairs:
+			{#tapeColor.
+			tapeColor}
 ]
 
-{ #category : #accessing }
-RoadBike >> spares [
-	| spares |
-	spares := super spares.
-	spares
-		addAll:
-			(Dictionary
-				newFromPairs:
-					{#tapeColor.
-					tapeColor}).
-	^ spares
+{ #category : #initialization }
+RoadBike >> postInitialize: aDict [
+	tapeColor := aDict at: #tapeColor ifAbsent: nil.
+	^ self
 ]
