@@ -38,6 +38,11 @@ Bicycle >> size [
 ]
 
 { #category : #accessing }
+Bicycle >> spares [
+	^ Dictionary newFromPairs: { #tireSize . tireSize . #chain . chain }
+]
+
+{ #category : #accessing }
 Bicycle >> tireSize [
 	^ tireSize
 ]

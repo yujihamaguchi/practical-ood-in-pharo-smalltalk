@@ -21,6 +21,15 @@ MountainBikeTest >> testSize [
 ]
 
 { #category : #tests }
+MountainBikeTest >> testSpares [
+	| mountainBike expected |
+	mountainBike := MountainBike new.
+	mountainBike initialize: (Dictionary newFromPairs: {#size . 'M' . #frontShock . 'Manitou' . #rearShock . 'Fox'}).
+	expected := Dictionary newFromPairs: {#tireSize . '2.1' . #chain . '10-speed' . #rearShock . 'Fox'}.
+	self assert: mountainBike spares equals: expected
+]
+
+{ #category : #tests }
 MountainBikeTest >> testTireSize [ 
 	| mountainBike |
 	mountainBike := MountainBike new.

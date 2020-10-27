@@ -2,9 +2,7 @@ Class {
 	#name : #RoadBike,
 	#superclass : #Bicycle,
 	#instVars : [
-		'tapeColor',
-		'frontShock',
-		'rearShock'
+		'tapeColor'
 	],
 	#category : #'Example-OOD-FastFeet'
 }
@@ -23,5 +21,13 @@ RoadBike >> initialize: aDict [
 
 { #category : #accessing }
 RoadBike >> spares [
-	^ Dictionary newFromPairs: { #chain . '10-speed' . #tireSize . '23' . #tapeColor . tapeColor }	
+	| spares |
+	spares := super spares.
+	spares
+		addAll:
+			(Dictionary
+				newFromPairs:
+					{#tapeColor.
+					tapeColor}).
+	^ spares
 ]

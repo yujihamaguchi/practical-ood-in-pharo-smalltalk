@@ -21,3 +21,11 @@ MountainBike >> initialize: aDict [
 	super initialize: aDict.
 	^ self
 ]
+
+{ #category : #accessing }
+MountainBike >> spares [
+	| spares |
+	spares := super spares.
+	spares addAll: (Dictionary newFromPairs: {#rearShock . rearShock }).
+	^ spares
+]
