@@ -14,33 +14,35 @@ RoadBikeTest >> testChain [
 
 { #category : #tests }
 RoadBikeTest >> testIsSchedulableFromTo [
-	| bicycle startDate startDateConsideringLeadDays endDate |
+	| bicycle startDate startDateConsideringLeadDays endDate schedule |
+	bicycle := RoadBike new.
+	schedule := Mock new.
+
 	startDate := Date year: 2015 month: 9 day: 5.
 	endDate := Date year: 2015 month: 9 day: 10.
-
-	bicycle := RoadBike new.
-	startDateConsideringLeadDays := startDate addDays: ((bicycle leadDays) negated) .
+	startDateConsideringLeadDays :=  Date year: 2015 month: 9 day: 4.
 	
-	(bicycle stub isScheduledFrom: startDateConsideringLeadDays to: endDate) willReturn: false.
+	bicycle stub leadDays willReturn: 1.	
+	(bicycle stub isScheduledFrom: startDateConsideringLeadDays to: endDate in: schedule) willReturn: false.
 	
-	self assert: (bicycle isSchedulableFrom: startDate to: endDate) equals: true.
+	self assert: (bicycle isSchedulableFrom: startDate to: endDate in: schedule) equals: true.
 	
-	bicycle should receive isScheduledFrom: startDateConsideringLeadDays to: endDate.
+	bicycle should receive leadDays.
+	bicycle should receive isScheduledFrom: startDateConsideringLeadDays to: endDate in: schedule.
 ]
 
 { #category : #tests }
 RoadBikeTest >> testIsScheduledFromTo [
 	| bicycle schedule startDate endDate |
-	startDate := Date year: 2015 month: 9 day: 4.
-	endDate := Date year: 2015 month: 9 day: 10.
-
-	schedule := Mock new.
 	bicycle := RoadBike new.
+	schedule := Mock new.
+	startDate := Mock new.
+	endDate := Mock new.
 	bicycle initialize: (Dictionary newFromPairs: {#schedule . schedule}).
 
 	(schedule stub isScheduled: bicycle from: startDate to: endDate) willReturn: false.
 
-	self assert: (bicycle isScheduledFrom: startDate to: endDate) equals: false.
+	self assert: (bicycle isScheduledFrom: startDate to: endDate in: schedule) equals: false.
 
 	schedule should receive isScheduled: bicycle from: startDate to: endDate
 

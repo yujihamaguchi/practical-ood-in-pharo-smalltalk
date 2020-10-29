@@ -1,6 +1,8 @@
 Class {
 	#name : #Bicycle,
 	#superclass : #Object,
+	#traits : 'TSchedulable',
+	#classTraits : 'TSchedulable classTrait',
 	#instVars : [
 		'schedule',
 		'size',
@@ -35,19 +37,9 @@ Bicycle >> initialize: aDict [
 	^ self
 ]
 
-{ #category : #testing }
-Bicycle >> isSchedulableFrom: startDate to: endDate [
-	^ (self isScheduledFrom: (startDate addDays: ((self leadDays) negated)) to: endDate) not.
-]
-
-{ #category : #testing }
-Bicycle >> isScheduledFrom: startDate to: endDate [
-	^ schedule isScheduled: self from: startDate to: endDate
-]
-
 { #category : #'default value' }
 Bicycle >> leadDays [
-	^ self subclassResponsibility 
+	^ 0
 ]
 
 { #category : #accessing }
