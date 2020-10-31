@@ -12,11 +12,6 @@ RoadBike >> defaultTireSize [
 	^ '23'
 ]
 
-{ #category : #'default value' }
-RoadBike >> leadDays [ 
-	^ 1
-]
-
 { #category : #accessing }
 RoadBike >> localSpares [
 	^ Dictionary

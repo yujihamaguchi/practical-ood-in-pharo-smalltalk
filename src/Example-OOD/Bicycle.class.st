@@ -2,7 +2,6 @@ Class {
 	#name : #Bicycle,
 	#superclass : #Object,
 	#instVars : [
-		'schedule',
 		'size',
 		'chain',
 		'tireSize'
@@ -27,27 +26,11 @@ Bicycle >> defaultTireSize [
 
 { #category : #initialization }
 Bicycle >> initialize: aDict [
-	schedule := aDict at: #schedule ifAbsent: BicycleSchedule new.
 	size := aDict at: #size ifAbsent: nil.
 	chain := aDict at: #chain ifAbsent: self defaultChain.
 	tireSize := aDict at: #tireSize ifAbsent: self defaultTireSize.
 	self postInitialize: aDict.
 	^ self
-]
-
-{ #category : #testing }
-Bicycle >> isSchedulableFrom: startDate to: endDate [
-	^ (self isScheduledFrom: (startDate addDays: ((self leadDays) negated)) to: endDate) not.
-]
-
-{ #category : #testing }
-Bicycle >> isScheduledFrom: startDate to: endDate [
-	^ schedule isScheduled: self from: startDate to: endDate
-]
-
-{ #category : #'default value' }
-Bicycle >> leadDays [
-	^ self subclassResponsibility 
 ]
 
 { #category : #accessing }
