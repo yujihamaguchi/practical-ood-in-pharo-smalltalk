@@ -1,9 +1,9 @@
 Class {
 	#name : #Parts,
 	#superclass : #Object,
+	#type : #variable,
 	#instVars : [
-		'chain',
-		'tireSize'
+		'parts'
 	],
 	#category : #'Example-OOD-FastFeet'
 }
@@ -19,10 +19,8 @@ Parts >> defaultTireSize [
 ]
 
 { #category : #initialization }
-Parts >> initialize: aDict [
-	chain := aDict at: #chain ifAbsent: self defaultChain.
-	tireSize := aDict at: #tireSize ifAbsent: self defaultTireSize.
-	self postInitialize: aDict.
+Parts >> initialize: theParts [
+	parts := theParts.
 	^ self
 ]
 
@@ -37,9 +35,12 @@ Parts >> postInitialize: aDict [
 ]
 
 { #category : #accessing }
+Parts >> size [ 
+	^ parts size
+]
+
+{ #category : #accessing }
 Parts >> spares [
-	| spares |
-	spares := Dictionary newFromPairs: { #tireSize . tireSize . #chain . chain }.
-	spares addAll: self localSpares.
-	^ spares
+	^ parts select: [ :part | part needsSpare ]
+
 ]

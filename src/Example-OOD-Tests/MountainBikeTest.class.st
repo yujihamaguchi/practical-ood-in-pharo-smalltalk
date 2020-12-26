@@ -14,12 +14,26 @@ MountainBikeTest >> testSize [
 
 { #category : #tests }
 MountainBikeTest >> testSpares [
-	| mountainBike parts expected |
-	mountainBike := MountainBike new.
-	parts := MountainBikeParts new.
-	parts initialize: (Dictionary newFromPairs: {#rearShock . 'Fox'}).
-	mountainBike initialize: (Dictionary newFromPairs: {#size . 'L' . #parts . parts}).
-	expected := Dictionary newFromPairs: {#tireSize . '2.1' . #chain. '10-speed' . #rearShock . 'Fox'}.
-	self assert: mountainBike spares equals: expected.
+	| chain mountainTire rearShock frontShock parts mountainBikeParts mountainBike expected |
+	chain := Part new initialize: (Dictionary newFromPairs: {#name . 'chain' . #description . '10-speed'}).
+	mountainTire := Part new initialize: (Dictionary newFromPairs: {#name . 'tireSize' . #description . '23'}).	
+	rearShock := Part new initialize: (Dictionary newFromPairs: {#name . 'rearShock' . #description . 'Fox'}).	
+	frontShock := Part new initialize: (Dictionary newFromPairs: {#name . 'frontShock' . #description . 'Manitou' . #needsSpare . false}).	
 
+	parts := Set new.
+	parts add: chain; add: mountainTire; add: frontShock; add: rearShock.
+	
+	mountainBikeParts := MountainBikeParts new.
+	mountainBikeParts initialize: parts.
+
+	mountainBike := MountainBike new.
+	mountainBike initialize: (Dictionary newFromPairs: {#parts . mountainBikeParts}).
+
+	expected := Set new.
+	expected add: chain; add: mountainTire; add: rearShock.
+	
+	self assert: mountainBike spares equals: expected.
+	
+	self assert: mountainBike spares size equals: 3.
+	self assert: mountainBike parts size equals: 4.
 ]

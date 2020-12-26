@@ -1,6 +1,7 @@
 Class {
 	#name : #RoadBikeParts,
 	#superclass : #Parts,
+	#type : #variable,
 	#instVars : [
 		'tapeColor'
 	],

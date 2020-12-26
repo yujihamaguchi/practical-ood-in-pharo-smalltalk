@@ -16,6 +16,11 @@ Bicycle >> initialize: aDict [
 ]
 
 { #category : #accessing }
+Bicycle >> parts [ 
+	^ parts
+]
+
+{ #category : #accessing }
 Bicycle >> size [ 
 	^ size
 ]

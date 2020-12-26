@@ -1,6 +1,7 @@
 Class {
 	#name : #MountainBikeParts,
 	#superclass : #Parts,
+	#type : #variable,
 	#instVars : [
 		'frontShock',
 		'rearShock'
