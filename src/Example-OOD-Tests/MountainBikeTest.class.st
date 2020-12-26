@@ -5,14 +5,6 @@ Class {
 }
 
 { #category : #tests }
-MountainBikeTest >> testChain [
-	| mountainBike |
-	mountainBike := MountainBike new.
-	mountainBike initialize: Dictionary empty.
-	self assert: mountainBike chain equals: '10-speed'
-]
-
-{ #category : #tests }
 MountainBikeTest >> testSize [
 	| mountainBike |
 	mountainBike := MountainBike new.
@@ -22,19 +14,12 @@ MountainBikeTest >> testSize [
 
 { #category : #tests }
 MountainBikeTest >> testSpares [
-	| mountainBike expected |
+	| mountainBike parts expected |
 	mountainBike := MountainBike new.
-	mountainBike
-		initialize: (Dictionary newFromPairs: {#rearShock . 'Fox'}).
-	expected := Dictionary
-		newFromPairs: {#tireSize . '2.1' . #chain . '10-speed' . #rearShock . 'Fox'}.
-	self assert: mountainBike spares equals: expected
-]
+	parts := MountainBikeParts new.
+	parts initialize: (Dictionary newFromPairs: {#rearShock . 'Fox'}).
+	mountainBike initialize: (Dictionary newFromPairs: {#size . 'L' . #parts . parts}).
+	expected := Dictionary newFromPairs: {#tireSize . '2.1' . #chain. '10-speed' . #rearShock . 'Fox'}.
+	self assert: mountainBike spares equals: expected.
 
-{ #category : #tests }
-MountainBikeTest >> testTireSize [
-	| mountainBike |
-	mountainBike := MountainBike new.
-	mountainBike initialize: Dictionary empty.
-	self assert: mountainBike tireSize equals: '2.1'
 ]
