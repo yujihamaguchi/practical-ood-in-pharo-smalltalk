@@ -1,8 +1,15 @@
 Class {
 	#name : #MechanicTest,
 	#superclass : #TestCase,
+	#traits : 'TPrepareInterfaceTest',
+	#classTraits : 'TPrepareInterfaceTest classTrait',
 	#category : #'Example-OOD-Tests-Trip'
 }
+
+{ #category : #'as yet unclassified' }
+MechanicTest >> targetObject [
+	^ Mechanic new 
+]
 
 { #category : #tests }
 MechanicTest >> testPrepareTrip [
